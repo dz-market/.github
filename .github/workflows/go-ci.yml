@@ -49,3 +49,5 @@ jobs:
         timeout-minutes: 10
         steps:
             - uses: golang/govulncheck-action@v1
+              with:
+                  go-version-file: go.mod
