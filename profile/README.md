@@ -1,5 +1,9 @@
+<div align="center">
+
 # Marketplace
 
 A distributed marketplace built in Go.
 
-**[Stack here: dz-market/marketplace](https://github.com/dz-market/marketplace)** - service map
+[Explore the project](https://github.com/dz-market/marketplace)
+
+</div>
