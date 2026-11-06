@@ -5,6 +5,7 @@ on:
 
 permissions:
     contents: read
+    id-token: write
 
 jobs:
     lint:
@@ -34,14 +35,20 @@ jobs:
               with:
                   go-version-file: go.mod
 
-            - name: go.mod is tidy
+            - name: Check go.mod tidiness
               run: go mod tidy -diff
 
-            - name: build
+            - name: Build
               run: go build ./...
 
-            - name: test
-              run: go test -race -count=1 ./...
+            - name: Run tests with coverage
+              run: go test -race -count=1 -coverprofile=coverage.out ./...
+
+            - name: Upload coverage
+              uses: codecov/codecov-action@v7
+              with:
+                  files: ./coverage.out
+                  use_oidc: true
 
     vulncheck:
         name: Vulncheck
